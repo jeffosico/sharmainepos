@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="text-white bg-secondary">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <i class="fab fa-2x fa-stripe-s"></i>
+        <span class="fs-5" style="padding-left: 20px;">Sharmaine's Inventory</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+        <li>
+            <a href="{% url 'dashboard' %}" class="nav-link text-white">
+            <i class="fas fa-tachometer-alt fa-lg"></i>
+            <span class="fs-6" style="padding-left: 20px;">Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link text-white">
+            <i class="far fa-clipboard fa-lg"></i>
+            <span class="fs-6" style="padding-left: 30px;">Orders</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'products' %}" class="nav-link text-white">
+            <i class="fas fa-cube fa-lg"></i>
+            <span class="fs-6" style="padding-left: 25px;">Products</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'users' %}" class="nav-link active" aria-current="page">
+            <i class="fas fa-users fa-lg"></i>
+            <span class="fs-6" style="padding-left: 20px;">Users</span>
+            </a>
+        </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{request.user.imageURL}}" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong>{{request.user.username}}</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="container bg-secondary">
+        <div class="row">
+            <div class="card bg-danger text-white" style="width: 18rem;margin:20px;">
+                <div class="card-body">
+                <h5 class="card-title">Users</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+            <div class="card bg-primary text-white" style="width: 18rem;margin:20px;">
+                <div class="card-body">
+                <h5 class="card-title">Users</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 align-self-end">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">Add User</button>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade text-dark" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="border:none;font-size:20px;font-weight:bold;">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="" method="POST">{% csrf_token %}
+                    <div class="modal-body">
+                        
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="">First Name</label>
+                                <input type="text" class="form-control" id="id_first_name" name="first_name" placeholder="Enter First Name">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="">Last Name</label>
+                                <input type="text" class="form-control" id="id_last_name" name="last_name" placeholder="Enter Last Name">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="">Email</label>
+                                <input type="email" class="form-control" id="id_email" name="email" placeholder="Enter Email">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="">Username</label>
+                                <input type="text" class="form-control" id="id_username" name="username" placeholder="Enter Username">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="">Password</label>
+                                <input type="password" class="form-control" id="id_password1" name="password1" placeholder="Enter Password">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="">Password</label>
+                                <input type="password" class="form-control" id="id_password2" name="password2" placeholder="Repeat Password">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="">Avatar</label>
+                                <input type="file" class="form-control" id="id_avatar" name="avatar" accept="image/*">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="">Is Staff?</label><br>
+                                {{form.is_staff}}
+                            </div>
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="">Is Admin?</label><br>
+                                {{form.is_admin}}
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button hx-post="{% url 'add-user' %}" hx-target="#tbody" hx-swap="afterbegin" type="submit" class="btn btn-success">Add User</button>
+                    </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 25px;">
+            <table class="table table-striped table-light text-dark">
+                <thead>
+                <th scope="col"><input type="checkbox" id="checkall" /></th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Email</th>
+                <th scope="col">Username</th>
+                <th scope="col">Role</th>
+                <th scope="col">Actions</th>
+                <th scope="col"></th>
+                </thead>
+                <tbody id="tbody">
+                {% for user in users %}
+                    <tr>
+                        <td><input type="checkbox" id="checkthis" /></td>
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.last_name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{% if user.is_superuser %}Super Admin{% elif user.is_admin %}Admin{% elif user.is_staff %}Staff{% endif %}</td>
+                        <td><a href="" style="color:green;"><i class="fas fa-edit"></i></th></a>&nbsp;&nbsp;&nbsp;<a href="" style="color:red;"><i class="fas fa-trash-alt"></i></th></a></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+{% endblock content %}

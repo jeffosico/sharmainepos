@@ -1,0 +1,62 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.88.1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <title>Sharmaine's Inventory</title>
+
+    <!-- JQUERY -->
+    <script defer src="{% static 'js/jquery/jquery-3.6.0.js' %}"></script>
+
+    <!-- Bootstrap core -->
+    <link href="{% static 'css/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+    <script defer src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+
+    <!-- Fontawesome -->
+    <link href="{% static 'css/fontawesome/all.css' %}" rel="stylesheet">
+    <script defer src="{% static 'js/fontawesome/all.js' %}"></script>
+
+    <!-- HTMX JS -->
+    <script src="{% static 'js/htmx/htmx.min.js' %}"></script>
+    
+    <script defer src="{% static 'js/sidebars.js' %}"></script>
+    
+    <!-- Popper JS -->
+    <script defer src="{% static 'js/popper/popper.js' %}"></script>
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="{% static 'styles/styles.css' %}" rel="stylesheet">
+
+  </head>
+  <body>
+    
+{% block content %}
+
+{% endblock content %}
+
+
+
+</body>
+</html>

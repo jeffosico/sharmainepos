@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="text-white bg-secondary">
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <i class="fab fa-2x fa-stripe-s"></i>
+    <span class="fs-5" style="padding-left: 20px;">Sharmaine's Inventory</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+    <li>
+        <a href="{% url 'dashboard' %}" class="nav-link active" aria-current="page">
+        <i class="fas fa-tachometer-alt fa-lg"></i>
+        <span class="fs-6" style="padding-left: 20px;">Dashboard</span>
+        </a>
+    </li>
+    <li>
+        <a href="#" class="nav-link text-white">
+        <i class="far fa-clipboard fa-lg"></i>
+        <span class="fs-6" style="padding-left: 30px;">Orders</span>
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'products' %}" class="nav-link text-white">
+        <i class="fas fa-cube fa-lg"></i>
+        <span class="fs-6" style="padding-left: 25px;">Products</span>
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'users' %}" class="nav-link text-white">
+        <i class="fas fa-users fa-lg"></i>
+        <span class="fs-6" style="padding-left: 20px;">Users</span>
+        </a>
+    </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>{{request.user.username}}</strong>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+    </ul>
+    </div>
+  </div>
+
+  <div class="container text-white bg-secondary">
+      <div class="row">
+          <div class="card bg-danger text-white" style="width: 18rem;margin:20px;">
+              <div class="card-body">
+                <h5 class="card-title">Products</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+            <div class="card bg-primary text-white" style="width: 18rem;margin:20px;">
+              <div class="card-body">
+                <h5 class="card-title">Today's Sales</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+            <div class="card bg-success text-white" style="width: 18rem;margin:20px;">
+              <div class="card-body">
+                <h5 class="card-title">Today's Profit</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+      </div>
+  </div>
+</main>
+{% endblock content %}
